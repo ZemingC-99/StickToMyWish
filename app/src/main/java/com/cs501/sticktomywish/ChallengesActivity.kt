@@ -1,6 +1,7 @@
 package com.cs501.sticktomywish
 
 import android.app.AlertDialog
+import android.content.Intent
 import android.os.Bundle
 import android.text.InputType
 import android.util.Log
@@ -28,6 +29,7 @@ class ChallengesActivity : AppCompatActivity() {
 
         challengesRecyclerView = findViewById(R.id.challengesRecyclerView)
         addChallengeButton = findViewById(R.id.addChallengeButton)
+        val tweetButton: Button = findViewById(R.id.tweetButton)
 
         // Initialize the adapter with an empty list
         challengesAdapter = ChallengesAdapter(mutableListOf())
@@ -42,6 +44,10 @@ class ChallengesActivity : AppCompatActivity() {
             Log.d("ChallengesActivity", "Add challenge clicked")
             showAddChallengeDialog()
         }
+
+        tweetButton.setOnClickListener {
+            showTweetDialog()
+        }
     }
 
     private fun showAddChallengeDialog() {
@@ -49,11 +55,9 @@ class ChallengesActivity : AppCompatActivity() {
         val layout = LinearLayout(this)
         layout.orientation = LinearLayout.VERTICAL
 
-        // Create an EditText for the challenge name input
         val nameInputField = EditText(this)
         nameInputField.hint = "Enter the name of the challenge"
 
-        // Create an EditText for the number of days input
         val daysInputField = EditText(this)
         daysInputField.inputType = InputType.TYPE_CLASS_NUMBER
         daysInputField.hint = "Enter the number of days"
@@ -65,7 +69,7 @@ class ChallengesActivity : AppCompatActivity() {
             LinearLayout.LayoutParams.MATCH_PARENT,
             LinearLayout.LayoutParams.WRAP_CONTENT
         )
-        layoutParams.setMargins(50, 0, 50, 0) // Adjust the margins as needed
+        layoutParams.setMargins(50, 0, 50, 0)
         nameInputField.layoutParams = layoutParams
         daysInputField.layoutParams = layoutParams
 
@@ -90,6 +94,28 @@ class ChallengesActivity : AppCompatActivity() {
             .show()
     }
 
+    private fun showTweetDialog() {
+        val inputField = EditText(this)
+        inputField.hint = "Enter your tweet"
+
+        AlertDialog.Builder(this)
+            .setTitle("Compose Tweet")
+            .setView(inputField)
+            .setPositiveButton("Tweet") { dialog, which ->
+                val tweetText = inputField.text.toString()
+                if (tweetText.isNotEmpty()) {
+                    sendTweet(tweetText)
+                }
+            }
+            .setNegativeButton("Cancel", null)
+            .show()
+    }
+
+    private fun sendTweet(tweetText: String) {
+        val intent = Intent(this, TweetCustomWebView::class.java)
+        intent.putExtra("tweettext", tweetText)
+        startActivityForResult(intent, 100)
+    }
 
 }
 

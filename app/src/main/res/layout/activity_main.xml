@@ -37,6 +37,17 @@
         android:layout_height="wrap_content"
         android:text="Add Challenge"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/tweetButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <Button
+        android:id="@+id/tweetButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tweet it!"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toEndOf="@id/addChallengeButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"/>
 

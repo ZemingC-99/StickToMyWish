@@ -82,7 +82,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="425dp"
-        android:layout_height="556dp"
+        android:layout_height="550dp"
         android:layout_below="@id/tabsLayout"
         android:layout_marginTop="16dp" />
 

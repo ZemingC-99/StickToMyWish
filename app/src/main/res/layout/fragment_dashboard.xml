@@ -57,8 +57,6 @@
         <Button
             android:id="@+id/all_tab"
             style="@style/TabButtonStyle"
-            android:shape="rectangle"
-            android:radius="8dp"
             android:text="All"/>
 
         <!-- Button 2 -->
@@ -87,5 +85,27 @@
         android:layout_height="556dp"
         android:layout_below="@id/tabsLayout"
         android:layout_marginTop="16dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/linear"
+        android:layout_alignBottom="@id/recyclerView"
+        android:background="#E3E1E1"
+        android:orientation="vertical">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Add Goal"
+            android:id="@+id/GoalName"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Add"/>
+
+    </LinearLayout>
+
 
 </RelativeLayout>

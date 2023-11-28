@@ -1,22 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.dashboard.DashboardFragment">
+    android:paddingLeft="16dp"
+    android:paddingTop="16dp"
+    android:paddingRight="16dp"
+    android:paddingBottom="16dp"
+    tools:context=".MainActivity">
 
+    <!-- Title -->
     <TextView
-        android:id="@+id/text_dashboard"
+        android:id="@+id/titleTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Your Challenges"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="16dp"/>
+
+    <!-- Tab Buttons -->
+    <LinearLayout
+        android:id="@+id/tabsLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:layout_below="@id/titleTextView"
+        android:orientation="horizontal">
+
+        <!-- Button 1 -->
+        <Button
+            android:id="@+id/all_tab"
+            style="@style/TabButtonStyle"
+            android:text="All"/>
+
+        <!-- Button 2 -->
+        <Button
+            android:id="@+id/fitness_tab"
+            style="@style/TabButtonStyle"
+            android:text="Fitness"/>
+
+        <!-- Button 3 -->
+        <Button
+            android:id="@+id/personal_tab"
+            style="@style/TabButtonStyle"
+            android:text="Personal"/>
+
+        <!-- Button 4 -->
+        <Button
+            android:id="@+id/health_tab"
+            style="@style/TabButtonStyle"
+            android:text="Health"/>
+    </LinearLayout>
+
+    <!-- RecyclerView -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/tabsLayout"
+        android:layout_marginTop="16dp"
+        />
+
+</RelativeLayout>

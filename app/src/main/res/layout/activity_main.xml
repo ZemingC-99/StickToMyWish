@@ -31,6 +31,7 @@
         app:navGraph="@navigation/mobile_navigation" />
 
     <TextView
+        android:id="@+id/welcome_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -44,5 +45,16 @@
         android:textSize="20dp"
         android:textColor="@color/black"
         android:textAppearance="@anim/nav_default_enter_anim"/>
+
+    <EditText
+        android:id="@+id/password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Enter Password"
+        app:layout_constraintEnd_toEndOf="@+id/nav_host_fragment_activity_main"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/nav_host_fragment_activity_main"
+        app:layout_constraintTop_toBottomOf="@id/welcome_text" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

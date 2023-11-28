@@ -3,4 +3,5 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+    <string name="facebook_app_id">201594562997266</string><string name="facebook_client_token">06c8cfd5468eff3277eef4b4f8572018</string>
 </resources>

@@ -2,6 +2,7 @@ package com.cs501.sticktomywish
 
 import android.app.AlertDialog
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.text.InputType
 import android.util.Log
@@ -17,6 +18,9 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.facebook.FacebookSdk
+import com.facebook.share.model.ShareLinkContent
+import com.facebook.share.widget.ShareButton
 
 class ChallengesActivity : AppCompatActivity() {
     private lateinit var challengesAdapter: ChallengesAdapter
@@ -25,6 +29,7 @@ class ChallengesActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        FacebookSdk.sdkInitialize(getApplicationContext())
         setContentView(R.layout.activity_main)
 
         challengesRecyclerView = findViewById(R.id.challengesRecyclerView)
@@ -48,6 +53,12 @@ class ChallengesActivity : AppCompatActivity() {
         tweetButton.setOnClickListener {
             showTweetDialog()
         }
+
+        val shareButton: ShareButton = findViewById(R.id.fb_share_button)
+        val content = ShareLinkContent.Builder()
+            .setContentUrl(Uri.parse("https://facebook.com"))
+            .build()
+        shareButton.shareContent = content
     }
 
     private fun showAddChallengeDialog() {

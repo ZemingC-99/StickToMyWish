@@ -12,6 +12,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.StickToMyWish"
         tools:targetApi="34">
+
+        <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/facebook_app_id"/>
+        <meta-data android:name="com.facebook.sdk.ClientToken" android:value="@string/facebook_client_token"/>
+
+        <activity
+            android:name="com.facebook.FacebookActivity"
+            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation" />
+
         <activity android:name=".TweetCustomWebView" />
         <activity
             android:name=".ChallengesActivity"

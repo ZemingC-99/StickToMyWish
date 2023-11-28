@@ -16,11 +16,14 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.facebook.FacebookSdk
 import com.facebook.share.model.ShareLinkContent
 import com.facebook.share.widget.ShareButton
+import org.json.JSONArray
+import org.json.JSONException
 
 class ChallengesActivity : AppCompatActivity() {
     private lateinit var challengesAdapter: ChallengesAdapter
@@ -31,6 +34,7 @@ class ChallengesActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         FacebookSdk.sdkInitialize(getApplicationContext())
         setContentView(R.layout.activity_main)
+        val quoteFetcher = QuoteFetcher()
 
         challengesRecyclerView = findViewById(R.id.challengesRecyclerView)
         addChallengeButton = findViewById(R.id.addChallengeButton)
@@ -42,6 +46,9 @@ class ChallengesActivity : AppCompatActivity() {
         // Setup the RecyclerView
         challengesRecyclerView.adapter = challengesAdapter
         challengesRecyclerView.layoutManager = LinearLayoutManager(this)
+        val dividerItemDecoration = DividerItemDecoration(challengesRecyclerView.context,
+            (challengesRecyclerView.layoutManager as LinearLayoutManager).orientation)
+        challengesRecyclerView.addItemDecoration(dividerItemDecoration)
 
         // Set up the button click listener to add a new challenge
         addChallengeButton.setOnClickListener {
@@ -59,6 +66,24 @@ class ChallengesActivity : AppCompatActivity() {
             .setContentUrl(Uri.parse("https://facebook.com"))
             .build()
         shareButton.shareContent = content
+
+        val buttonGetQuote: Button = findViewById(R.id.button_get_quote)
+
+        buttonGetQuote.setOnClickListener {
+            quoteFetcher.fetchQuote { result ->
+                runOnUiThread {
+                    try {
+                        val jsonArray = JSONArray(result)
+                        val jsonObject = jsonArray.getJSONObject(0)
+                        val quote = jsonObject.getString("q")
+                        val author = jsonObject.getString("a")
+                        Toast.makeText(this, "\"$quote\"\n\n- $author", Toast.LENGTH_SHORT).show()
+                    } catch (e: JSONException) {
+                        Toast.makeText(this, "Error parsing the quote", Toast.LENGTH_SHORT).show()
+                    }
+                }
+            }
+        }
     }
 
     private fun showAddChallengeDialog() {

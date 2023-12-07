@@ -9,7 +9,7 @@
         <item name="android:background">@color/cardview_dark_background</item>
         <item name="android:textColor">@android:color/white</item>
         <item name="android:gravity">center</item>
-        <item name="android:textSize">10sp</item>
+        <item name="android:textSize">9dp</item>
         <item name="android:textStyle">bold</item>
         <item name="elevation">8dp</item>
         <item name="android:layout_marginEnd">4dp</item>

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F0F0F0">
+
+    <!-- Title -->
+    <TextView
+        android:id="@+id/settingsTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Settings"
+        android:textSize="24sp"
+        android:gravity="center"
+        android:padding="16dp"
+        android:background="?android:attr/colorPrimary"
+        android:textColor="#ffffff"
+        android:elevation="4dp"/>
+
+    <!-- Notifications Switch -->
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/notificationsSwitch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/settingsTitle"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:text="Notifications"
+        android:checked="true"/>
+
+    <!-- Dark Mode Switch -->
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/darkModeSwitch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/notificationsSwitch"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="8dp"
+        android:text="Dark Mode"/>
+
+    <TextView
+        android:id="@+id/preferredSocialMediaLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Preferred Social Media"
+        android:textSize="16sp"
+        android:gravity="center"
+        android:layout_below="@id/darkModeSwitch"
+        android:layout_marginTop="16dp"/>
+
+    <!-- Social Media Buttons Row -->
+    <LinearLayout
+        android:id="@+id/socialMediaButtons"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/darkModeSwitch"
+        android:layout_marginTop="60dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <!-- Instagram Button -->
+        <Button
+            android:id="@+id/instagramButton"
+            android:layout_width="70dp"
+            android:layout_height="50dp"
+            android:background="@drawable/round_button"
+            android:text="IG" />
+
+        <!-- Twitter Button -->
+        <Button
+            android:id="@+id/twitterButton"
+            android:layout_width="70dp"
+            android:layout_height="50dp"
+            android:background="@drawable/round_button"
+            android:text="TW" />
+
+        <!-- Facebook Button -->
+        <Button
+            android:id="@+id/facebookButton"
+            android:layout_width="70dp"
+            android:layout_height="50dp"
+            android:background="@drawable/round_button"
+            android:text="FB" />
+    </LinearLayout>
+</RelativeLayout>
